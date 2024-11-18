@@ -60,6 +60,21 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         powerInWattsMyDevices_txt = new javax.swing.JTextField();
         deviceNameMyDevices_txt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        residencesMyResidences_cbx = new javax.swing.JComboBox();
+        searchResidence_btn = new javax.swing.JButton();
+        cep_txt1 = new javax.swing.JTextField();
+        country_txt1 = new javax.swing.JTextField();
+        uf_txt1 = new javax.swing.JTextField();
+        city_txt1 = new javax.swing.JTextField();
+        neighborhood_txt1 = new javax.swing.JTextField();
+        street_txt1 = new javax.swing.JTextField();
+        number_txt1 = new javax.swing.JTextField();
+        additional_txt1 = new javax.swing.JTextField();
+        energyFee_txt1 = new javax.swing.JTextField();
+        updateDeviceInfo_btn1 = new javax.swing.JButton();
+        deleteResidence_btn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -200,6 +215,72 @@ public class MainMenu_GUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("My Devices", jPanel3);
 
+        jPanel4.setLayout(null);
+
+        residencesMyResidences_cbx.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel4.add(residencesMyResidences_cbx);
+        residencesMyResidences_cbx.setBounds(30, 180, 330, 30);
+
+        searchResidence_btn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        searchResidence_btn.setText("BUSCAR");
+        jPanel4.add(searchResidence_btn);
+        searchResidence_btn.setBounds(30, 220, 330, 20);
+
+        cep_txt1.setText("CEP da residencia");
+        jPanel4.add(cep_txt1);
+        cep_txt1.setBounds(80, 270, 280, 20);
+
+        country_txt1.setText("Pais");
+        jPanel4.add(country_txt1);
+        country_txt1.setBounds(80, 300, 280, 20);
+
+        uf_txt1.setText("Estado");
+        jPanel4.add(uf_txt1);
+        uf_txt1.setBounds(60, 340, 300, 20);
+
+        city_txt1.setText("Cidade");
+        jPanel4.add(city_txt1);
+        city_txt1.setBounds(100, 370, 260, 20);
+
+        neighborhood_txt1.setText("Bairro");
+        jPanel4.add(neighborhood_txt1);
+        neighborhood_txt1.setBounds(100, 410, 260, 20);
+
+        street_txt1.setText("Rua");
+        jPanel4.add(street_txt1);
+        street_txt1.setBounds(80, 440, 280, 20);
+
+        number_txt1.setText("Numero");
+        jPanel4.add(number_txt1);
+        number_txt1.setBounds(110, 480, 250, 20);
+
+        additional_txt1.setText("Complemento");
+        jPanel4.add(additional_txt1);
+        additional_txt1.setBounds(160, 510, 200, 20);
+
+        energyFee_txt1.setText("Tarifa de energia eletrica");
+        jPanel4.add(energyFee_txt1);
+        energyFee_txt1.setBounds(100, 580, 260, 20);
+
+        updateDeviceInfo_btn1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        updateDeviceInfo_btn1.setForeground(new java.awt.Color(255, 51, 0));
+        updateDeviceInfo_btn1.setText("ALTERAR INFORMACOES");
+        jPanel4.add(updateDeviceInfo_btn1);
+        updateDeviceInfo_btn1.setBounds(30, 610, 330, 20);
+
+        deleteResidence_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        deleteResidence_btn.setForeground(new java.awt.Color(255, 0, 0));
+        deleteResidence_btn.setText("EXCLUIR RESIDENCIA");
+        jPanel4.add(deleteResidence_btn);
+        deleteResidence_btn.setBounds(30, 640, 330, 20);
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/PowerHub_MyResidences.png"))); // NOI18N
+        jPanel4.add(jLabel4);
+        jLabel4.setBounds(-10, 0, 410, 690);
+
+        jTabbedPane1.addTab("My Residences", jPanel4);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -260,34 +341,49 @@ public class MainMenu_GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDevice_btn;
     public static javax.swing.JTextField additional_txt;
+    public static javax.swing.JTextField additional_txt1;
     public static javax.swing.JTextField cep_txt;
+    public static javax.swing.JTextField cep_txt1;
     public static javax.swing.JTextField city_txt;
+    public static javax.swing.JTextField city_txt1;
     public static javax.swing.JTextField country_txt;
+    public static javax.swing.JTextField country_txt1;
     private javax.swing.JButton deleteDevice_btn;
+    private javax.swing.JButton deleteResidence_btn;
     public static javax.swing.JTextField deviceNameMyDevices_txt;
     public static javax.swing.JTextField deviceNameNewDevice_txt;
     public static javax.swing.JComboBox devices_cbx;
     public static javax.swing.JTextField energyFee_txt;
+    public static javax.swing.JTextField energyFee_txt1;
     private javax.swing.JButton generateDeviceReport_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
     public static javax.swing.JTextField neighborhood_txt;
+    public static javax.swing.JTextField neighborhood_txt1;
     public static javax.swing.JTextField number_txt;
+    public static javax.swing.JTextField number_txt1;
     public static javax.swing.JTextField powerInWattsMyDevices_txt;
     public static javax.swing.JTextField powerInWattsNewDevice_txt;
     public static javax.swing.JComboBox residencesMyDevices_cbx;
+    public static javax.swing.JComboBox residencesMyResidences_cbx;
     public static javax.swing.JComboBox residencesNewDevice_cbx;
     private javax.swing.JButton save_btn;
     private javax.swing.JButton searchCEP_btn;
     private javax.swing.JButton searchDevice_btn;
+    private javax.swing.JButton searchResidence_btn;
     public static javax.swing.JToggleButton status_togglebtn;
     public static javax.swing.JTextField street_txt;
+    public static javax.swing.JTextField street_txt1;
     public static javax.swing.JTextField uf_txt;
+    public static javax.swing.JTextField uf_txt1;
     private javax.swing.JButton updateDeviceInfo_btn;
+    private javax.swing.JButton updateDeviceInfo_btn1;
     // End of variables declaration//GEN-END:variables
 }
