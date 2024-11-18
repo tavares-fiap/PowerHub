@@ -31,6 +31,7 @@ public class MainMenu_GUI extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
+        energyFee_txt = new javax.swing.JTextField();
         additional_txt = new javax.swing.JTextField();
         number_txt = new javax.swing.JTextField();
         street_txt = new javax.swing.JTextField();
@@ -64,6 +65,10 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel2.setLayout(null);
+
+        energyFee_txt.setText("Tarifa de energia eletrica");
+        jPanel2.add(energyFee_txt);
+        energyFee_txt.setBounds(130, 460, 230, 30);
 
         additional_txt.setText("Complemento");
         jPanel2.add(additional_txt);
@@ -104,7 +109,7 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         save_btn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         save_btn.setText("SALVAR RESIDENCIA");
         jPanel2.add(save_btn);
-        save_btn.setBounds(50, 410, 290, 30);
+        save_btn.setBounds(50, 500, 290, 30);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/PowerHub_AddResidence.png"))); // NOI18N
@@ -262,6 +267,7 @@ public class MainMenu_GUI extends javax.swing.JFrame {
     public static javax.swing.JTextField deviceNameMyDevices_txt;
     public static javax.swing.JTextField deviceNameNewDevice_txt;
     public static javax.swing.JComboBox devices_cbx;
+    public static javax.swing.JTextField energyFee_txt;
     private javax.swing.JButton generateDeviceReport_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
