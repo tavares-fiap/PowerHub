@@ -30,10 +30,11 @@ public class Login_GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        showPassword_btn = new javax.swing.JToggleButton();
         exit_btn = new javax.swing.JButton();
         send_btn = new javax.swing.JButton();
         signUp_btn1 = new javax.swing.JButton();
-        password_txt = new javax.swing.JTextField();
+        password_txt = new javax.swing.JPasswordField();
         cpf_txt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
@@ -42,25 +43,49 @@ public class Login_GUI extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
+        showPassword_btn.setBackground(new java.awt.Color(255, 255, 255));
+        showPassword_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/eyeIcon.png"))); // NOI18N
+        showPassword_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPassword_btnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(showPassword_btn);
+        showPassword_btn.setBounds(300, 220, 60, 30);
+
         exit_btn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         exit_btn.setText("SAIR");
+        exit_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exit_btnActionPerformed(evt);
+            }
+        });
         jPanel1.add(exit_btn);
         exit_btn.setBounds(260, 660, 130, 30);
 
         send_btn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         send_btn.setText("ENTRAR");
+        send_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                send_btnActionPerformed(evt);
+            }
+        });
         jPanel1.add(send_btn);
         send_btn.setBounds(40, 270, 320, 40);
 
         signUp_btn1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         signUp_btn1.setText("Não tenho cadastro");
+        signUp_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signUp_btn1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(signUp_btn1);
         signUp_btn1.setBounds(40, 320, 320, 20);
 
-        password_txt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        password_txt.setText("Insira sua senha");
+        password_txt.setText("jPasswordField1");
         jPanel1.add(password_txt);
-        password_txt.setBounds(150, 220, 210, 30);
+        password_txt.setBounds(150, 220, 150, 30);
 
         cpf_txt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cpf_txt.setText("Insira seu CPF");
@@ -85,6 +110,28 @@ public class Login_GUI extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(396, 704));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void signUp_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUp_btn1ActionPerformed
+        Model.Funcs_DAO.changeScreen(this, new SignUp_GUI());
+    }//GEN-LAST:event_signUp_btn1ActionPerformed
+
+    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
+        Model.Funcs_DAO.exit();
+    }//GEN-LAST:event_exit_btnActionPerformed
+
+    private void send_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_send_btnActionPerformed
+       Model.Login_DAO.login(cpf_txt.getText(), password_txt.getText());
+    }//GEN-LAST:event_send_btnActionPerformed
+
+    private void showPassword_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPassword_btnActionPerformed
+        if (showPassword_btn.isSelected()) {
+            // Mostrar os caracteres reais
+            password_txt.setEchoChar('\0');
+        } else {
+            // Ocultar os caracteres reais
+            password_txt.setEchoChar('\u25cf');
+        }
+    }//GEN-LAST:event_showPassword_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,8 +176,9 @@ public class Login_GUI extends javax.swing.JFrame {
     private javax.swing.JButton exit_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    public static javax.swing.JTextField password_txt;
+    public static javax.swing.JPasswordField password_txt;
     private javax.swing.JButton send_btn;
+    private javax.swing.JToggleButton showPassword_btn;
     private javax.swing.JButton signUp_btn1;
     // End of variables declaration//GEN-END:variables
 }

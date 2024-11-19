@@ -1,7 +1,7 @@
 package Model;
 
-
 public class User {
+
     private String cpf;
     private String name;
     private String phoneNumber;
@@ -15,6 +15,13 @@ public class User {
         this.emailAddress = emailAddress;
         this.password = password;
     }
-    
-    
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
 }

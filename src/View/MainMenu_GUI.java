@@ -72,6 +72,7 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         number_txt1 = new javax.swing.JTextField();
         additional_txt1 = new javax.swing.JTextField();
         energyFee_txt1 = new javax.swing.JTextField();
+        generateDeviceReport_btn1 = new javax.swing.JButton();
         updateDeviceInfo_btn1 = new javax.swing.JButton();
         deleteResidence_btn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -262,17 +263,22 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         jPanel4.add(energyFee_txt1);
         energyFee_txt1.setBounds(100, 580, 260, 20);
 
+        generateDeviceReport_btn1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        generateDeviceReport_btn1.setText("GERAR RELATORIO");
+        jPanel4.add(generateDeviceReport_btn1);
+        generateDeviceReport_btn1.setBounds(30, 605, 330, 25);
+
         updateDeviceInfo_btn1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         updateDeviceInfo_btn1.setForeground(new java.awt.Color(255, 51, 0));
         updateDeviceInfo_btn1.setText("ALTERAR INFORMACOES");
         jPanel4.add(updateDeviceInfo_btn1);
-        updateDeviceInfo_btn1.setBounds(30, 610, 330, 20);
+        updateDeviceInfo_btn1.setBounds(30, 630, 330, 20);
 
         deleteResidence_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         deleteResidence_btn.setForeground(new java.awt.Color(255, 0, 0));
         deleteResidence_btn.setText("EXCLUIR RESIDENCIA");
         jPanel4.add(deleteResidence_btn);
-        deleteResidence_btn.setBounds(30, 640, 330, 20);
+        deleteResidence_btn.setBounds(30, 650, 330, 20);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/PowerHub_MyResidences.png"))); // NOI18N
@@ -356,6 +362,7 @@ public class MainMenu_GUI extends javax.swing.JFrame {
     public static javax.swing.JTextField energyFee_txt;
     public static javax.swing.JTextField energyFee_txt1;
     private javax.swing.JButton generateDeviceReport_btn;
+    private javax.swing.JButton generateDeviceReport_btn1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

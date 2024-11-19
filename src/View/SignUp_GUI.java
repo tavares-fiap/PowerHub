@@ -30,9 +30,10 @@ public class SignUp_GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        showPassword_btn = new javax.swing.JToggleButton();
         goBack_btn1 = new javax.swing.JButton();
         goBack_btn = new javax.swing.JButton();
-        password_txt = new javax.swing.JTextField();
+        password_txt = new javax.swing.JPasswordField();
         email_txt = new javax.swing.JTextField();
         phoneNumber_txt = new javax.swing.JTextField();
         name_txt = new javax.swing.JTextField();
@@ -46,20 +47,39 @@ public class SignUp_GUI extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
+        showPassword_btn.setBackground(new java.awt.Color(255, 255, 255));
+        showPassword_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/eyeIcon.png"))); // NOI18N
+        showPassword_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPassword_btnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(showPassword_btn);
+        showPassword_btn.setBounds(300, 290, 60, 30);
+
         goBack_btn1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         goBack_btn1.setText("Já tenho cadastro");
+        goBack_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBack_btn1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(goBack_btn1);
         goBack_btn1.setBounds(40, 380, 320, 20);
 
         goBack_btn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         goBack_btn.setText("VOLTAR");
+        goBack_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBack_btnActionPerformed(evt);
+            }
+        });
         jPanel1.add(goBack_btn);
         goBack_btn.setBounds(260, 620, 130, 30);
 
-        password_txt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        password_txt.setText("Insira sua senha");
+        password_txt.setText("jPasswordField1");
         jPanel1.add(password_txt);
-        password_txt.setBounds(150, 290, 210, 30);
+        password_txt.setBounds(150, 290, 150, 30);
 
         email_txt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         email_txt.setText("Insira seu email");
@@ -89,6 +109,11 @@ public class SignUp_GUI extends javax.swing.JFrame {
 
         exit_btn1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         exit_btn1.setText("SAIR");
+        exit_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exit_btn1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(exit_btn1);
         exit_btn1.setBounds(260, 660, 130, 30);
 
@@ -110,6 +135,28 @@ public class SignUp_GUI extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(396, 704));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void goBack_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBack_btn1ActionPerformed
+        Model.Funcs_DAO.changeScreen(this, new Login_GUI());
+    }//GEN-LAST:event_goBack_btn1ActionPerformed
+
+    private void goBack_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBack_btnActionPerformed
+        Model.Funcs_DAO.changeScreen(this, new Login_GUI());
+    }//GEN-LAST:event_goBack_btnActionPerformed
+
+    private void exit_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btn1ActionPerformed
+        Model.Funcs_DAO.exit();
+    }//GEN-LAST:event_exit_btn1ActionPerformed
+
+    private void showPassword_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPassword_btnActionPerformed
+        if (showPassword_btn.isSelected()) {
+            // Mostrar os caracteres reais
+            password_txt.setEchoChar('\0');
+        } else {
+            // Ocultar os caracteres reais
+            password_txt.setEchoChar('\u25cf');
+        }
+    }//GEN-LAST:event_showPassword_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,8 +209,9 @@ public class SignUp_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JTextField name_txt;
-    public static javax.swing.JTextField password_txt;
+    public static javax.swing.JPasswordField password_txt;
     public static javax.swing.JTextField phoneNumber_txt;
     private javax.swing.JButton send_btn;
+    private javax.swing.JToggleButton showPassword_btn;
     // End of variables declaration//GEN-END:variables
 }

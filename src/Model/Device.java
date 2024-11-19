@@ -13,8 +13,7 @@ public class Device {
     
     private List<Measurement> usageMeasurement = new ArrayList<>();
     
-    public Device(int id, String deviceName, double powerInWatts, boolean status) {
-        this.id = id;
+    public Device(String deviceName, double powerInWatts, boolean status) {
         this.deviceName = deviceName;
         this.powerInWatts = powerInWatts;
         this.status = status;

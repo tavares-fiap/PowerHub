@@ -9,4 +9,11 @@ public class Measurement {
     private LocalDateTime started;
     private LocalDateTime ended;
     private double consumptionInWatts;
+
+    public Measurement(Device device, LocalDateTime started) {
+        this.device = device;
+        this.started = started;
+    }
+    
+    
 }

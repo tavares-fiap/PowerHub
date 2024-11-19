@@ -9,6 +9,7 @@ public class Residence {
     private String cep;
     private String country;
     private String state;
+    private String city;
     private String neighborhood;
     private String street;
     private String number;
@@ -16,10 +17,11 @@ public class Residence {
     private String energyFee;
     private List<Device> devices = new ArrayList<>();
     
-    public Residence(String cep, String country, String state, String neighborhood, String street, String number, String additional, String energyFee) {
+    public Residence(String cep, String country, String state, String city, String neighborhood, String street, String number, String additional, String energyFee) {
         this.cep = cep;
         this.country = country;
         this.state = state;
+        this.city = city;
         this.neighborhood = neighborhood;
         this.street = street;
         this.number = number;
