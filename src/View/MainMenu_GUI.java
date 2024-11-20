@@ -42,6 +42,8 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         cep_txt = new javax.swing.JTextField();
         searchCEP_btn = new javax.swing.JButton();
         save_btn = new javax.swing.JButton();
+        exit_btn1 = new javax.swing.JButton();
+        logout_btn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         addDevice_btn = new javax.swing.JButton();
@@ -126,6 +128,26 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         save_btn.setText("SALVAR RESIDENCIA");
         jPanel2.add(save_btn);
         save_btn.setBounds(50, 500, 290, 30);
+
+        exit_btn1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        exit_btn1.setText("SAIR");
+        exit_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exit_btn1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(exit_btn1);
+        exit_btn1.setBounds(250, 640, 130, 30);
+
+        logout_btn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        logout_btn.setText("LOGOUT");
+        logout_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logout_btnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(logout_btn);
+        logout_btn.setBounds(250, 600, 130, 30);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/PowerHub_AddResidence.png"))); // NOI18N
@@ -302,6 +324,14 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void exit_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btn1ActionPerformed
+        Model.Funcs_DAO.exit();
+    }//GEN-LAST:event_exit_btn1ActionPerformed
+
+    private void logout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btnActionPerformed
+
+    }//GEN-LAST:event_logout_btnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -361,6 +391,7 @@ public class MainMenu_GUI extends javax.swing.JFrame {
     public static javax.swing.JComboBox devices_cbx;
     public static javax.swing.JTextField energyFee_txt;
     public static javax.swing.JTextField energyFee_txt1;
+    private javax.swing.JButton exit_btn1;
     private javax.swing.JButton generateDeviceReport_btn;
     private javax.swing.JButton generateDeviceReport_btn1;
     private javax.swing.JLabel jLabel1;
@@ -372,6 +403,7 @@ public class MainMenu_GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton logout_btn;
     public static javax.swing.JTextField neighborhood_txt;
     public static javax.swing.JTextField neighborhood_txt1;
     public static javax.swing.JTextField number_txt;

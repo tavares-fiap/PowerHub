@@ -104,6 +104,11 @@ public class SignUp_GUI extends javax.swing.JFrame {
 
         send_btn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         send_btn.setText("ENVIAR");
+        send_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                send_btnActionPerformed(evt);
+            }
+        });
         jPanel1.add(send_btn);
         send_btn.setBounds(40, 330, 320, 40);
 
@@ -157,6 +162,17 @@ public class SignUp_GUI extends javax.swing.JFrame {
             password_txt.setEchoChar('\u25cf');
         }
     }//GEN-LAST:event_showPassword_btnActionPerformed
+
+    private void send_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_send_btnActionPerformed
+        String cpf = cpf_txt.getText();
+        String name = name_txt.getText();
+        String phoneNumber = phoneNumber_txt.getText();
+        String email = email_txt.getText();
+        String password = password_txt.getText();
+        if (Model.UserFuncs_DAO.signUp(cpf, name, phoneNumber, email, password)) {
+            Model.Funcs_DAO.changeScreen(this, new MainMenu_GUI());
+        }
+    }//GEN-LAST:event_send_btnActionPerformed
 
     /**
      * @param args the command line arguments

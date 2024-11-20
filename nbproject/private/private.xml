@@ -5,15 +5,23 @@
         <group>
             <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Model/Residence.java</file>
             <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/View/Splash_GUI.java</file>
-            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Model/Measurement.java</file>
             <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/View/Login_GUI.java</file>
             <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Model/User.java</file>
-            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/View/SignUp_GUI.java</file>
+            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Image/eyeIcon.png</file>
+            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Model/Login_DAO.java</file>
             <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/main/Main.java</file>
-            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/View/MainMenu_GUI.java</file>
-            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Model/Client.java</file>
             <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Image/PowerHub_Character.png</file>
+            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Controller/DataBaseConfig_DB.java</file>
             <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Model/Device.java</file>
+            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Model/Funcs_DAO.java</file>
+            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Controller/LoggedUser_Controller.java</file>
+            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Model/Measurement.java</file>
+            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/View/SignUp_GUI.java</file>
+            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Controller/Connect_DB.java</file>
+            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/View/MainMenu_GUI.java</file>
+            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Model/UserFuncs_DAO.java</file>
+            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Model/ValidationFuncs_DAO.java</file>
+            <file>file:/C:/Users/sapat/OneDrive/Documentos/NetBeansProjects/PowerHub/src/Model/CleanFields_DAO.java</file>
         </group>
     </open-files>
 </project-private>

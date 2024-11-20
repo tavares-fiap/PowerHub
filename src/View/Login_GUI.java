@@ -5,6 +5,7 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,7 +18,7 @@ public class Login_GUI extends javax.swing.JFrame {
      */
     public Login_GUI() {
         initComponents();
-        
+
     }
 
     /**
@@ -120,7 +121,9 @@ public class Login_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_exit_btnActionPerformed
 
     private void send_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_send_btnActionPerformed
-       Model.Login_DAO.login(cpf_txt.getText(), password_txt.getText());
+        if (Model.Login_DAO.login(cpf_txt.getText(), password_txt.getText())) {
+            Model.Funcs_DAO.changeScreen(this, new MainMenu_GUI());
+        }
     }//GEN-LAST:event_send_btnActionPerformed
 
     private void showPassword_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPassword_btnActionPerformed
