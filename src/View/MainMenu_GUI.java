@@ -138,6 +138,11 @@ public class MainMenu_GUI extends javax.swing.JFrame {
 
         save_btn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         save_btn.setText("SALVAR RESIDENCIA");
+        save_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_btnActionPerformed(evt);
+            }
+        });
         jPanel2.add(save_btn);
         save_btn.setBounds(50, 500, 290, 30);
 
@@ -439,6 +444,10 @@ public class MainMenu_GUI extends javax.swing.JFrame {
     private void searchCEP_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCEP_btnActionPerformed
         Model.FieldFuncs_DAO.autoCompleteAddress(cep_txt.getText());
     }//GEN-LAST:event_searchCEP_btnActionPerformed
+
+    private void save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btnActionPerformed
+        Model.ResidenceFuncs_DAO.addResidence(cep_txt.getText(), country_txt.getText(), uf_txt.getText(), city_txt.getText(), neighborhood_txt.getText(), street_txt.getText(), number_txt.getText(), additional_txt.getText(), energyFee_txt.getText());
+    }//GEN-LAST:event_save_btnActionPerformed
 
     /**
      * @param args the command line arguments

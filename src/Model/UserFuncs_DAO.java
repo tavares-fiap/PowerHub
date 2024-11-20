@@ -17,7 +17,7 @@ public class UserFuncs_DAO {
 
     public static boolean signUp(String cpf, String name, String phoneNumber, String email, String password) {
         Controller.Connect_DB.loadDriver();
-        if (ValidationFuncs_DAO.isCpfValid(cpf) && ValidationFuncs_DAO.isNameValid(name) && !ValidationFuncs_DAO.isCpfRegistered(cpf)) {
+        if (ValidationFuncs_DAO.isCpfValid(cpf) && ValidationFuncs_DAO.containsOnlyLettersAndSpaces(name) && !ValidationFuncs_DAO.isCpfRegistered(cpf)) {
             try {
                 Connection con = null;
                 try {

@@ -25,16 +25,46 @@ public class ValidationFuncs_DAO {
         return true;
     }
     
-    public static boolean isNameValid(String name) {
-        if (name == null || name.length() < 1) {
+    public static boolean isCepValid(String cep) {
+        if (cep == null || cep.length() != 8) {
             return false;
         }
-        for (char c : name.toCharArray()) {
+        for (char c : cep.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static boolean containsOnlyLettersAndSpaces(String inputString) {
+        if (inputString == null || inputString.length() < 1) {
+            return false;
+        }
+        for (char c : inputString.toCharArray()) {
             if (!Character.isLetter(c) && c != ' ') { // Verifica se o caractere não é uma letra nem um espaço
                 return false;
             }
         }
         return true;
+    }
+    
+    public static boolean canBeConvertedToInteger(String number) {
+        try {
+            Integer.parseInt(number);
+            return true;
+        } catch(NumberFormatException e) {
+            return false;
+        }
+    }
+    
+    public static boolean canBeConvertedToDouble(String number) {
+        try {
+            Double.parseDouble(number);
+            return true;
+        } catch(NumberFormatException e) {
+            return false;
+        }
     }
     
     public static boolean isCpfRegistered(String validCpf) {

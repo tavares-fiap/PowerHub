@@ -24,4 +24,9 @@ public class User {
         return password;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+    
+    
 }
