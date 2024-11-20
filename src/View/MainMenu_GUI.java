@@ -5,6 +5,7 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,7 +18,7 @@ public class MainMenu_GUI extends javax.swing.JFrame {
      */
     public MainMenu_GUI() {
         initComponents();
-        
+
     }
 
     /**
@@ -50,6 +51,8 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         residencesNewDevice_cbx = new javax.swing.JComboBox();
         powerInWattsNewDevice_txt = new javax.swing.JTextField();
         deviceNameNewDevice_txt = new javax.swing.JTextField();
+        logout_btn1 = new javax.swing.JButton();
+        exit_btn2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         deleteDevice_btn = new javax.swing.JButton();
@@ -61,6 +64,8 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         status_togglebtn = new javax.swing.JToggleButton();
         powerInWattsMyDevices_txt = new javax.swing.JTextField();
         deviceNameMyDevices_txt = new javax.swing.JTextField();
+        logout_btn2 = new javax.swing.JButton();
+        exit_btn3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         residencesMyResidences_cbx = new javax.swing.JComboBox();
@@ -77,6 +82,8 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         generateDeviceReport_btn1 = new javax.swing.JButton();
         updateDeviceInfo_btn1 = new javax.swing.JButton();
         deleteResidence_btn = new javax.swing.JButton();
+        logout_btn3 = new javax.swing.JButton();
+        exit_btn4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -121,6 +128,11 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         cep_txt.setBounds(100, 20, 160, 30);
 
         searchCEP_btn.setText("BUSCAR");
+        searchCEP_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchCEP_btnActionPerformed(evt);
+            }
+        });
         jPanel2.add(searchCEP_btn);
         searchCEP_btn.setBounds(270, 20, 90, 30);
 
@@ -177,6 +189,26 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         jPanel1.add(deviceNameNewDevice_txt);
         deviceNameNewDevice_txt.setBounds(30, 180, 330, 30);
 
+        logout_btn1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        logout_btn1.setText("LOGOUT");
+        logout_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logout_btn1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(logout_btn1);
+        logout_btn1.setBounds(250, 600, 130, 30);
+
+        exit_btn2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        exit_btn2.setText("SAIR");
+        exit_btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exit_btn2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(exit_btn2);
+        exit_btn2.setBounds(250, 640, 130, 30);
+
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/PowerHub_AddDevice.png"))); // NOI18N
         jPanel1.add(jLabel2);
@@ -230,6 +262,26 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         deviceNameMyDevices_txt.setText("Nome do dispositivo");
         jPanel3.add(deviceNameMyDevices_txt);
         deviceNameMyDevices_txt.setBounds(30, 320, 320, 30);
+
+        logout_btn2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        logout_btn2.setText("LOGOUT");
+        logout_btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logout_btn2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(logout_btn2);
+        logout_btn2.setBounds(250, 600, 130, 30);
+
+        exit_btn3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        exit_btn3.setText("SAIR");
+        exit_btn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exit_btn3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(exit_btn3);
+        exit_btn3.setBounds(250, 640, 130, 30);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/PowerHub_MyDevices.png"))); // NOI18N
@@ -302,6 +354,26 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         jPanel4.add(deleteResidence_btn);
         deleteResidence_btn.setBounds(30, 650, 330, 20);
 
+        logout_btn3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        logout_btn3.setText("LOGOUT");
+        logout_btn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logout_btn3ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(logout_btn3);
+        logout_btn3.setBounds(20, 10, 130, 30);
+
+        exit_btn4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        exit_btn4.setText("SAIR");
+        exit_btn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exit_btn4ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(exit_btn4);
+        exit_btn4.setBounds(20, 50, 130, 30);
+
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/PowerHub_MyResidences.png"))); // NOI18N
         jPanel4.add(jLabel4);
@@ -329,8 +401,44 @@ public class MainMenu_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_exit_btn1ActionPerformed
 
     private void logout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btnActionPerformed
-
+        Controller.LoggedUser_Controller.logout();
+        JOptionPane.showMessageDialog(null, "Logout realizado com sucesso! Ate mais!");
+        Model.Funcs_DAO.changeScreen(this, new Login_GUI());
     }//GEN-LAST:event_logout_btnActionPerformed
+
+    private void logout_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btn1ActionPerformed
+        Controller.LoggedUser_Controller.logout();
+        JOptionPane.showMessageDialog(null, "Logout realizado com sucesso! Ate mais!");
+        Model.Funcs_DAO.changeScreen(this, new Login_GUI());
+    }//GEN-LAST:event_logout_btn1ActionPerformed
+
+    private void exit_btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btn2ActionPerformed
+        Model.Funcs_DAO.exit();
+    }//GEN-LAST:event_exit_btn2ActionPerformed
+
+    private void logout_btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btn2ActionPerformed
+        Controller.LoggedUser_Controller.logout();
+        JOptionPane.showMessageDialog(null, "Logout realizado com sucesso! Ate mais!");
+        Model.Funcs_DAO.changeScreen(this, new Login_GUI());
+    }//GEN-LAST:event_logout_btn2ActionPerformed
+
+    private void exit_btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btn3ActionPerformed
+        Model.Funcs_DAO.exit();
+    }//GEN-LAST:event_exit_btn3ActionPerformed
+
+    private void logout_btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btn3ActionPerformed
+        Controller.LoggedUser_Controller.logout();
+        JOptionPane.showMessageDialog(null, "Logout realizado com sucesso! Ate mais!");
+        Model.Funcs_DAO.changeScreen(this, new Login_GUI());
+    }//GEN-LAST:event_logout_btn3ActionPerformed
+
+    private void exit_btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btn4ActionPerformed
+        Model.Funcs_DAO.exit();
+    }//GEN-LAST:event_exit_btn4ActionPerformed
+
+    private void searchCEP_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCEP_btnActionPerformed
+        Model.FieldFuncs_DAO.autoCompleteAddress(cep_txt.getText());
+    }//GEN-LAST:event_searchCEP_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -392,6 +500,9 @@ public class MainMenu_GUI extends javax.swing.JFrame {
     public static javax.swing.JTextField energyFee_txt;
     public static javax.swing.JTextField energyFee_txt1;
     private javax.swing.JButton exit_btn1;
+    private javax.swing.JButton exit_btn2;
+    private javax.swing.JButton exit_btn3;
+    private javax.swing.JButton exit_btn4;
     private javax.swing.JButton generateDeviceReport_btn;
     private javax.swing.JButton generateDeviceReport_btn1;
     private javax.swing.JLabel jLabel1;
@@ -404,6 +515,9 @@ public class MainMenu_GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton logout_btn;
+    private javax.swing.JButton logout_btn1;
+    private javax.swing.JButton logout_btn2;
+    private javax.swing.JButton logout_btn3;
     public static javax.swing.JTextField neighborhood_txt;
     public static javax.swing.JTextField neighborhood_txt1;
     public static javax.swing.JTextField number_txt;

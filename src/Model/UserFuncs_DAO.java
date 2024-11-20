@@ -33,7 +33,7 @@ public class UserFuncs_DAO {
                     insert.execute(); // Executando a inserção 
                     JOptionPane.showMessageDialog(null, "\nCadastro realizado com sucesso!\n", "", -1);
                     Controller.LoggedUser_Controller.setLoggedUser(new User(cpf, name, phoneNumber, email, password));
-                    Model.CleanFields_DAO.cleanSignUpFields();
+                    Model.FieldFuncs_DAO.cleanSignUpFields();
                     return true;
                 } catch (SQLException ex) {
                     if (ex.getSQLState().equals("23000")) {  // Verifica se o código SQL é de violação de chave primária

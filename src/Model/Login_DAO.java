@@ -23,6 +23,8 @@ public class Login_DAO {
                     View.Login_GUI.password_txt.setText("");
                     return false;
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario nao encontrado!");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao buscar o Tutor no banco de dados", "ERRO!", 0);
