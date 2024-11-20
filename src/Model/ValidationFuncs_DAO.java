@@ -49,6 +49,18 @@ public class ValidationFuncs_DAO {
         return true;
     }
     
+    public static boolean containsNumber(String inputString) {
+        if (inputString == null || inputString.length() < 1) {
+            return false;
+        }
+        for (char c : inputString.toCharArray()) {
+            if (Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
     public static boolean canBeConvertedToInteger(String number) {
         try {
             Integer.parseInt(number);

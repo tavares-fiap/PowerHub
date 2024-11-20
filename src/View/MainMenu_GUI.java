@@ -18,7 +18,7 @@ public class MainMenu_GUI extends javax.swing.JFrame {
      */
     public MainMenu_GUI() {
         initComponents();
-
+        Model.FieldFuncs_DAO.refreshResidenceCombobox();
     }
 
     /**

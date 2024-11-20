@@ -14,11 +14,11 @@ public class ResidenceFuncs_DAO {
     
     public static boolean addResidence(String cep, String country, String state, String city, String neighborhood, String street, String number, String additional, String energyFee){
         if (ValidationFuncs_DAO.isCepValid(cep) &&
-            ValidationFuncs_DAO.containsOnlyLettersAndSpaces(country) &&
-            ValidationFuncs_DAO.containsOnlyLettersAndSpaces(state) &&
-            ValidationFuncs_DAO.containsOnlyLettersAndSpaces(city) &&
-            ValidationFuncs_DAO.containsOnlyLettersAndSpaces(neighborhood) &&
-            ValidationFuncs_DAO.containsOnlyLettersAndSpaces(street) &&
+            !ValidationFuncs_DAO.containsNumber(country) &&
+            !ValidationFuncs_DAO.containsNumber(state) &&
+            !ValidationFuncs_DAO.containsNumber(city) &&
+            !ValidationFuncs_DAO.containsNumber(neighborhood) &&
+            !ValidationFuncs_DAO.containsNumber(street) &&
             ValidationFuncs_DAO.canBeConvertedToInteger(number) &&
             ValidationFuncs_DAO.canBeConvertedToDouble(energyFee)) {
             
@@ -42,6 +42,7 @@ public class ResidenceFuncs_DAO {
                 JOptionPane.showMessageDialog(null, "Residencia adicionada com sucesso!", "", JOptionPane.INFORMATION_MESSAGE);
 
                 Model.FieldFuncs_DAO.cleanAddResidenceFields();
+                Model.FieldFuncs_DAO.refreshResidenceCombobox();
                 return true;
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Ocorreu algum erro na inserção!", "ERRO!", JOptionPane.ERROR_MESSAGE);
