@@ -22,6 +22,10 @@ public class FieldFuncs_DAO {
         View.SignUp_GUI.password_txt.setText("");
     }
 
+    public static void cleanNewDeviceFields(){
+        View.MainMenu_GUI.deviceNameNewDevice_txt.setText("");
+        View.MainMenu_GUI.powerInWattsNewDevice_txt.setText("");
+    }
     public static void cleanAddResidenceFields() {
         View.MainMenu_GUI.cep_txt.setText("");
         View.MainMenu_GUI.uf_txt.setText("");

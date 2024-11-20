@@ -177,10 +177,20 @@ public class MainMenu_GUI extends javax.swing.JFrame {
 
         addDevice_btn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         addDevice_btn.setText("ADICIONAR");
+        addDevice_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDevice_btnActionPerformed(evt);
+            }
+        });
         jPanel1.add(addDevice_btn);
         addDevice_btn.setBounds(30, 280, 330, 30);
 
         residencesNewDevice_cbx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        residencesNewDevice_cbx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                residencesNewDevice_cbxActionPerformed(evt);
+            }
+        });
         jPanel1.add(residencesNewDevice_cbx);
         residencesNewDevice_cbx.setBounds(30, 120, 330, 30);
 
@@ -448,6 +458,21 @@ public class MainMenu_GUI extends javax.swing.JFrame {
     private void save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btnActionPerformed
         Model.ResidenceFuncs_DAO.addResidence(cep_txt.getText(), country_txt.getText(), uf_txt.getText(), city_txt.getText(), neighborhood_txt.getText(), street_txt.getText(), number_txt.getText(), additional_txt.getText(), energyFee_txt.getText());
     }//GEN-LAST:event_save_btnActionPerformed
+
+    private void addDevice_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDevice_btnActionPerformed
+        try {
+            String selectedResidence = String.valueOf(residencesNewDevice_cbx.getSelectedItem());
+            int residenceId = Integer.parseInt(selectedResidence.split(" ")[0]);
+            Model.DeviceFuncs_DAO.addDevice(deviceNameNewDevice_txt.getText(), powerInWattsNewDevice_txt.getText(), residenceId);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Residencia nao encontrada!");
+        }
+
+    }//GEN-LAST:event_addDevice_btnActionPerformed
+
+    private void residencesNewDevice_cbxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residencesNewDevice_cbxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_residencesNewDevice_cbxActionPerformed
 
     /**
      * @param args the command line arguments
