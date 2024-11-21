@@ -1,13 +1,13 @@
 =-=-=-=- RALATORIO DE DISPOSITIVO =-=-=-=-
 
-Nome: PC GAMER SHOPEE
-ID: 3
-Potencia em WATTS: 12000.0
+Nome: aaaa
+ID: 8
+Potencia: 5000.0 WATTS
 
 ---- MEASUREMENTS INFO ----
 
-Total kWH: 5.6
-Tarifa de energia media: 3.85
-Tempo total de uso: 0.4666666666666667
-Total gasto estimado (R$): 21.56
-Quantidade total de medicoes:1
+Consumo total: 0.0 kWh
+Tarifa de energia media: R$ 0.0
+Tempo total de uso: 0.0 Hrs
+Total gasto estimado: R$ 0.0
+Quantidade total de medicoes:0

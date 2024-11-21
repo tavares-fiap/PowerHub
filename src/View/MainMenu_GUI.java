@@ -581,6 +581,10 @@ public class MainMenu_GUI extends javax.swing.JFrame {
             String selectedDevice = String.valueOf(devices_cbx.getSelectedItem());
             int deviceId = Integer.parseInt(selectedDevice.split(" ")[0]);
             Model.DeviceFuncs_DAO.updateDeviceInfo(deviceId, deviceNameMyDevices_txt.getText(), powerInWattsMyDevices_txt.getText());
+            String selectedResidence = String.valueOf(residencesMyDevices_cbx.getSelectedItem());
+            int residenceId = Integer.parseInt(selectedResidence.split(" ")[0]);
+            Model.FieldFuncs_DAO.refreshDeviceCombobox(residenceId);
+            Model.FieldFuncs_DAO.cleanMyDevicesFields();
         } catch (Exception e) {
             System.out.println("Dispositivo nao encontrado!");
         }
@@ -592,6 +596,10 @@ public class MainMenu_GUI extends javax.swing.JFrame {
             String selectedDevice = String.valueOf(devices_cbx.getSelectedItem());
             int deviceId = Integer.parseInt(selectedDevice.split(" ")[0]);
             Model.DeviceFuncs_DAO.deleteDevice(deviceId);
+            String selectedResidence = String.valueOf(residencesMyDevices_cbx.getSelectedItem());
+            int residenceId = Integer.parseInt(selectedResidence.split(" ")[0]);
+            Model.FieldFuncs_DAO.refreshDeviceCombobox(residenceId);
+            Model.FieldFuncs_DAO.cleanMyDevicesFields();
         } catch (Exception e) {
             System.out.println("Dispositivo nao encontrado!");
         }
@@ -649,7 +657,9 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         try {
             String selectedResidence = String.valueOf(residencesMyResidences_cbx.getSelectedItem());
             int residenceId = Integer.parseInt(selectedResidence.split(" ")[0]);
-            Model.DeviceFuncs_DAO.deleteDevice(residenceId);
+            Model.ResidenceFuncs_DAO.deleteResidence(residenceId);
+            Model.FieldFuncs_DAO.refreshDeviceCombobox(residenceId);
+            Model.FieldFuncs_DAO.cleanMyDevicesFields();
         } catch (Exception e) {
             System.out.println("Residencia invalida!");
         }

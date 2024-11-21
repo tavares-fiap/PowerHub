@@ -140,12 +140,12 @@ public class DeviceFuncs_DAO {
             writer.write("=-=-=-=- RALATORIO DE DISPOSITIVO =-=-=-=-\n\n");
             writer.write("Nome: " + deviceName + "\n");
             writer.write("ID: " + deviceId + "\n");
-            writer.write("Potencia em WATTS: " + power + "\n\n");
+            writer.write("Potencia: " + power + " WATTS\n\n");
             writer.write("---- MEASUREMENTS INFO ----\n\n");
-            writer.write("Total kWH: " + consumption + "\n");
-            writer.write("Tarifa de energia media: " + avgEnergyFee + "\n");
-            writer.write("Tempo total de uso: " + usageTimeInHours + "\n");
-            writer.write("Total gasto estimado (R$): " + finalFee + "\n");
+            writer.write("Consumo total: " + consumption + " kWh\n");
+            writer.write("Tarifa de energia media: R$ " + avgEnergyFee + "\n");
+            writer.write("Tempo total de uso: " + usageTimeInHours + " Hrs\n");
+            writer.write("Total gasto estimado: R$ " + finalFee + "\n");
             writer.write("Quantidade total de medicoes:" + totalMeasurements + "\n");
             writer.close();
 

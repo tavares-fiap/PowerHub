@@ -1,27 +1,20 @@
 =-=-=-=- RALATORIO DE RESIDENCIA =-=-=-=-
 
-CEP: 01422000
-ID: 1
+CEP: 38412246
+ID: 3
 Pais: Brasil
-
-UF: SP
-
-Cidade: São Paulo
-
-Bairro: Jardim Paulista
-
-Rua: Alameda Franca
-
-Numero: 50
-
-Complemento: Apto200
-
+UF: MG
+Cidade: Uberlândia
+Bairro: Jardim das Palmeiras
+Rua: Rua dos Pica-Paus
+Numero: 15
+Complemento: 
 ---- MEASUREMENTS INFO ----
 
-Total de aparelhos: 3
-Soma das potencias dos aparelhos: 18000.0
-Consumo total de energia da residencia: 6.4667
-Media de kWH por aparelho: 2.1555666666666666
-Tarifa de energia media: 3.85
-Total gasto estimado (R$): 24.896795
-Total de medicoes: 5
+Total de aparelhos: 1
+Soma das potencias dos aparelhos: 1500.0 WATTS
+Consumo total de energia da residencia: 0.0 kWh
+Media de kWH por aparelho: 0.0 kWh
+Tarifa de energia media: R$ 0.0
+Total gasto estimado: R$ 0.0
+Total de medicoes: 1

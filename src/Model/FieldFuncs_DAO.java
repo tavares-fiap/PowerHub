@@ -37,6 +37,23 @@ public class FieldFuncs_DAO {
         View.MainMenu_GUI.additional_txt.setText("");
         View.MainMenu_GUI.energyFee_txt.setText("");
     }
+    
+    public static void cleanMyResidencesFields() {
+        View.MainMenu_GUI.cep_txt1.setText("");
+        View.MainMenu_GUI.uf_txt1.setText("");
+        View.MainMenu_GUI.city_txt1.setText("");
+        View.MainMenu_GUI.neighborhood_txt1.setText("");
+        View.MainMenu_GUI.street_txt1.setText("");
+        View.MainMenu_GUI.number_txt1.setText("");
+        View.MainMenu_GUI.country_txt1.setText("");
+        View.MainMenu_GUI.additional_txt1.setText("");
+        View.MainMenu_GUI.energyFee_txt1.setText("");
+    }
+    
+     public static void cleanMyDevicesFields(){
+        View.MainMenu_GUI.deviceNameMyDevices_txt.setText("");
+        View.MainMenu_GUI.powerInWattsMyDevices_txt.setText("");
+    }
 
     public static void autoCompleteAddress(String cep) {
         FindAddress_DAO search = new FindAddress_DAO();

@@ -91,6 +91,8 @@ public class ResidenceFuncs_DAO {
                 int rowsAffected = pstmtDelete.executeUpdate(); //executeUpdate para saber se houveram linhas afetadas pelo comando.
                 if (rowsAffected > 0) {
                     JOptionPane.showMessageDialog(null, "Residencia deletada com sucesso!");
+                    Model.FieldFuncs_DAO.refreshResidenceCombobox();
+                    Model.FieldFuncs_DAO.cleanMyResidencesFields();
                     return true;
                 } else {
                     JOptionPane.showMessageDialog(null, "Residencia nao encontrada!");
@@ -133,6 +135,8 @@ public class ResidenceFuncs_DAO {
                 int rowsAffected = pstmt.executeUpdate();
                 if (rowsAffected > 0) {
                     JOptionPane.showMessageDialog(null, "Informacoes da residencia alteradas com sucesso!");
+                    Model.FieldFuncs_DAO.refreshResidenceCombobox();
+                    Model.FieldFuncs_DAO.cleanMyResidencesFields();
                     return true;
                 } else {
                     JOptionPane.showMessageDialog(null, "Residencia nao encontrado");
@@ -173,11 +177,11 @@ public class ResidenceFuncs_DAO {
 
             writer.write("---- MEASUREMENTS INFO ----\n\n");
             writer.write("Total de aparelhos: " + totalDevices + "\n");
-            writer.write("Soma das potencias dos aparelhos: " + totalPower + "\n");
-            writer.write("Consumo total de energia da residencia (kWh): " + totalConsumption + "\n");
-            writer.write("Media de kWH por aparelho: " + avgConsumptionPerDevice + "\n");
-            writer.write("Tarifa de energia media: " + avgEnergyFee + "\n");
-            writer.write("Total gasto estimado (R$): " + finalFee + "\n");
+            writer.write("Soma das potencias dos aparelhos: " + totalPower + " WATTS\n");
+            writer.write("Consumo total de energia da residencia: " + totalConsumption + " kWh\n");
+            writer.write("Media de kWH por aparelho: " + avgConsumptionPerDevice + " kWh\n");
+            writer.write("Tarifa de energia media: R$ " + avgEnergyFee + "\n");
+            writer.write("Total gasto estimado: R$ " + finalFee + "\n");
             writer.write("Total de medicoes: " + totalMeasurements + "\n");
             writer.close();
 
