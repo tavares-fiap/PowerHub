@@ -237,12 +237,22 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         deleteDevice_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         deleteDevice_btn.setForeground(new java.awt.Color(255, 0, 0));
         deleteDevice_btn.setText("EXCLUIR DISPOSITIVO");
+        deleteDevice_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteDevice_btnActionPerformed(evt);
+            }
+        });
         jPanel3.add(deleteDevice_btn);
         deleteDevice_btn.setBounds(30, 535, 320, 20);
 
         updateDeviceInfo_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         updateDeviceInfo_btn.setForeground(new java.awt.Color(255, 51, 0));
         updateDeviceInfo_btn.setText("ALTERAR INFORMACOES");
+        updateDeviceInfo_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateDeviceInfo_btnActionPerformed(evt);
+            }
+        });
         jPanel3.add(updateDeviceInfo_btn);
         updateDeviceInfo_btn.setBounds(30, 510, 320, 20);
 
@@ -543,9 +553,30 @@ public class MainMenu_GUI extends javax.swing.JFrame {
             Model.FieldFuncs_DAO.refreshMyDevicesFields(deviceId);
         } catch (Exception e) {
             //JOptionPane.showMessageDialog(null, "Residencia nao encontrada!");
-            System.out.println("Residencia nao encontrada!");
+            System.out.println("Dispositivo nao encontrada!");
         }
     }//GEN-LAST:event_devices_cbxActionPerformed
+
+    private void updateDeviceInfo_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDeviceInfo_btnActionPerformed
+        try {
+            String selectedDevice = String.valueOf(devices_cbx.getSelectedItem());
+            int deviceId = Integer.parseInt(selectedDevice.split(" ")[0]);
+            Model.DeviceFuncs_DAO.updateDeviceInfo(deviceId, deviceNameMyDevices_txt.getText(), powerInWattsMyDevices_txt.getText());
+        } catch (Exception e) {
+            System.out.println("Dispositivo nao encontrado!");
+        }
+
+    }//GEN-LAST:event_updateDeviceInfo_btnActionPerformed
+
+    private void deleteDevice_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDevice_btnActionPerformed
+        try {
+            String selectedDevice = String.valueOf(devices_cbx.getSelectedItem());
+            int deviceId = Integer.parseInt(selectedDevice.split(" ")[0]);
+            Model.DeviceFuncs_DAO.deleteDevice(deviceId);
+        } catch (Exception e) {
+            System.out.println("Dispositivo nao encontrado!");
+        }
+    }//GEN-LAST:event_deleteDevice_btnActionPerformed
 
     /**
      * @param args the command line arguments

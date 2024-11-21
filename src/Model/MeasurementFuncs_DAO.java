@@ -85,7 +85,6 @@ public class MeasurementFuncs_DAO {
         try (Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword); PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setBoolean(1, true);
             stmt.setInt(2, deviceId);
-
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 String started = rs.getString("started");
