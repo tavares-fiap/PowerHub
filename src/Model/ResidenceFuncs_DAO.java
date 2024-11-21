@@ -82,7 +82,7 @@ public class ResidenceFuncs_DAO {
             return null;
         }
     }
-    
+
     public static boolean deleteResidence(int residence) {
         if (Model.ConfirmationFuncs_DAO.deleteConfirmation()) {
             try (java.sql.Connection con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
@@ -104,6 +104,50 @@ public class ResidenceFuncs_DAO {
         return false;
     }
     
+    public static boolean updateResidenceInfo(int residenceId, String cep, String country,
+            String state, String city, String neighborhood, String street, String number,
+            String additional, String energyFee) {
+        
+        if (ValidationFuncs_DAO.isCepValid(cep)
+                && !ValidationFuncs_DAO.containsNumber(country)
+                && !ValidationFuncs_DAO.containsNumber(state)
+                && !ValidationFuncs_DAO.containsNumber(city)
+                && !ValidationFuncs_DAO.containsNumber(neighborhood)
+                && !ValidationFuncs_DAO.containsNumber(street)
+                && ValidationFuncs_DAO.canBeConvertedToInteger(number)
+                && ValidationFuncs_DAO.canBeConvertedToDouble(energyFee)) {
+            
+            try (java.sql.Connection con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+                    PreparedStatement pstmt = con.prepareStatement("UPDATE RESIDENCE SET cep=?, country=?, state=?, city=?, neighborhood=?, street=?, number=?, additional=?, energy_fee=? WHERE id=?")) {
+                pstmt.setString(1, cep);
+                pstmt.setString(2, country);
+                pstmt.setString(3, state);
+                pstmt.setString(4, city);
+                pstmt.setString(5, neighborhood);
+                pstmt.setString(6, street);
+                pstmt.setString(7, number);
+                pstmt.setString(8, additional);
+                pstmt.setString(9, energyFee);
+                pstmt.setInt(10, residenceId);
+
+                int rowsAffected = pstmt.executeUpdate();
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(null, "Informacoes da residencia alteradas com sucesso!");
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Residencia nao encontrado");
+                    return false;
+                }
+            } catch (Exception e) {
+                System.out.println("Erro ao tentar atualizar informacoes da residencia!Codigo do erro: " + e.getMessage());
+                return false;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Algum campo nao foi preenchido corretamente!");
+        }
+        return false;
+    }
+
     private static void generateReport(int residenceId, String cep, String country,
             String state, String city, String neighborhood, String street, String number,
             String additional, double avgEnergyFee, int totalDevices, double totalPower, double totalConsumption,
@@ -119,18 +163,18 @@ public class ResidenceFuncs_DAO {
             writer.write("=-=-=-=- RALATORIO DE RESIDENCIA =-=-=-=-\n\n");
             writer.write("CEP: " + cep + "\n");
             writer.write("ID: " + residenceId + "\n");
-            writer.write("Pais: " + country + "\n\n");
-            writer.write("UF: " + state + "\n\n");
-            writer.write("Cidade: " + city + "\n\n");
-            writer.write("Bairro: " + neighborhood + "\n\n");
-            writer.write("Rua: " + street + "\n\n");
-            writer.write("Numero: " + number + "\n\n");
-            writer.write("Complemento: " + additional + "\n\n");
+            writer.write("Pais: " + country + "\n");
+            writer.write("UF: " + state + "\n");
+            writer.write("Cidade: " + city + "\n");
+            writer.write("Bairro: " + neighborhood + "\n");
+            writer.write("Rua: " + street + "\n");
+            writer.write("Numero: " + number + "\n");
+            writer.write("Complemento: " + additional + "\n");
 
             writer.write("---- MEASUREMENTS INFO ----\n\n");
             writer.write("Total de aparelhos: " + totalDevices + "\n");
             writer.write("Soma das potencias dos aparelhos: " + totalPower + "\n");
-            writer.write("Consumo total de energia da residencia: " + totalConsumption + "\n");
+            writer.write("Consumo total de energia da residencia (kWh): " + totalConsumption + "\n");
             writer.write("Media de kWH por aparelho: " + avgConsumptionPerDevice + "\n");
             writer.write("Tarifa de energia media: " + avgEnergyFee + "\n");
             writer.write("Total gasto estimado (R$): " + finalFee + "\n");
@@ -144,8 +188,6 @@ public class ResidenceFuncs_DAO {
         }
     }
 
-    
-    
     public static void fetchDataAndGenerateReport(int residenceId) {
         String residenceQuery = "SELECT r.cep, r.country, r.state, r.city, r.neighborhood, r.street, r.number, r.additional, r.energy_fee"
                 + " FROM RESIDENCE r"

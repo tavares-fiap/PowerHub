@@ -1,10 +1,13 @@
 =-=-=-=- RALATORIO DE DISPOSITIVO =-=-=-=-
-Nome: TV LED SAMSUNG RED LABEL PREMIUM 20P
-ID: 1
-Potencia em WATTS: 1000.0
+
+Nome: PC GAMER SHOPEE
+ID: 3
+Potencia em WATTS: 12000.0
+
 ---- MEASUREMENTS INFO ----
-Total kWH: 0.8667
+
+Total kWH: 5.6
 Tarifa de energia media: 3.85
-Tempo total de uso: 0.8666666666666667
-Total gasto estimado (R$): 3.336795
-Quantidade total de medicoes:2
+Tempo total de uso: 0.4666666666666667
+Total gasto estimado (R$): 21.56
+Quantidade total de medicoes:1

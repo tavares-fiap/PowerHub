@@ -105,4 +105,19 @@ public class FieldFuncs_DAO {
             }
         }
     }
+
+    public static void refreshMyResidencesFields(int residenceId) {
+        Residence residence = Model.ResidenceFuncs_DAO.getResidenceById(residenceId);
+        if (residence != null) {
+            View.MainMenu_GUI.cep_txt1.setText(residence.getCep());
+            View.MainMenu_GUI.country_txt1.setText(residence.getCountry());
+            View.MainMenu_GUI.uf_txt1.setText(residence.getState());
+            View.MainMenu_GUI.city_txt1.setText(residence.getCity());
+            View.MainMenu_GUI.neighborhood_txt1.setText(residence.getNeighborhood());
+            View.MainMenu_GUI.street_txt1.setText(residence.getStreet());
+            View.MainMenu_GUI.number_txt1.setText(residence.getNumber());
+            View.MainMenu_GUI.additional_txt1.setText(residence.getAdditional());
+            View.MainMenu_GUI.energyFee_txt1.setText(String.valueOf(residence.getEnergyFee()));
+        }
+    }
 }

@@ -70,7 +70,6 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         residencesMyResidences_cbx = new javax.swing.JComboBox();
-        searchResidence_btn = new javax.swing.JButton();
         cep_txt1 = new javax.swing.JTextField();
         country_txt1 = new javax.swing.JTextField();
         uf_txt1 = new javax.swing.JTextField();
@@ -345,53 +344,43 @@ public class MainMenu_GUI extends javax.swing.JFrame {
             }
         });
         jPanel4.add(residencesMyResidences_cbx);
-        residencesMyResidences_cbx.setBounds(30, 180, 330, 30);
-
-        searchResidence_btn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        searchResidence_btn.setText("BUSCAR");
-        searchResidence_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchResidence_btnActionPerformed(evt);
-            }
-        });
-        jPanel4.add(searchResidence_btn);
-        searchResidence_btn.setBounds(30, 220, 330, 20);
+        residencesMyResidences_cbx.setBounds(30, 190, 330, 40);
 
         cep_txt1.setText("CEP da residencia");
         jPanel4.add(cep_txt1);
-        cep_txt1.setBounds(80, 270, 280, 20);
+        cep_txt1.setBounds(80, 260, 280, 30);
 
         country_txt1.setText("Pais");
         jPanel4.add(country_txt1);
-        country_txt1.setBounds(80, 300, 280, 20);
+        country_txt1.setBounds(80, 300, 280, 30);
 
         uf_txt1.setText("Estado");
         jPanel4.add(uf_txt1);
-        uf_txt1.setBounds(60, 340, 300, 20);
+        uf_txt1.setBounds(60, 330, 300, 30);
 
         city_txt1.setText("Cidade");
         jPanel4.add(city_txt1);
-        city_txt1.setBounds(100, 370, 260, 20);
+        city_txt1.setBounds(100, 360, 260, 30);
 
         neighborhood_txt1.setText("Bairro");
         jPanel4.add(neighborhood_txt1);
-        neighborhood_txt1.setBounds(100, 410, 260, 20);
+        neighborhood_txt1.setBounds(100, 400, 260, 30);
 
         street_txt1.setText("Rua");
         jPanel4.add(street_txt1);
-        street_txt1.setBounds(80, 440, 280, 20);
+        street_txt1.setBounds(80, 430, 280, 30);
 
         number_txt1.setText("Numero");
         jPanel4.add(number_txt1);
-        number_txt1.setBounds(110, 480, 250, 20);
+        number_txt1.setBounds(110, 470, 250, 30);
 
         additional_txt1.setText("Complemento");
         jPanel4.add(additional_txt1);
-        additional_txt1.setBounds(160, 510, 200, 20);
+        additional_txt1.setBounds(160, 510, 200, 30);
 
         energyFee_txt1.setText("Tarifa de energia eletrica");
         jPanel4.add(energyFee_txt1);
-        energyFee_txt1.setBounds(100, 580, 260, 20);
+        energyFee_txt1.setBounds(100, 570, 260, 30);
 
         generateDeviceReport_btn1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         generateDeviceReport_btn1.setText("GERAR RELATORIO");
@@ -635,12 +624,15 @@ public class MainMenu_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_generateDeviceReport_btnActionPerformed
 
     private void residencesMyResidences_cbxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residencesMyResidences_cbxActionPerformed
-        // TODO add your handling code here:
+        try {
+            String selectedResidence = String.valueOf(residencesMyResidences_cbx.getSelectedItem());
+            int residenceId = Integer.parseInt(selectedResidence.split(" ")[0]);
+            Model.FieldFuncs_DAO.refreshMyResidencesFields(residenceId);
+        } catch (Exception e) {
+            //JOptionPane.showMessageDialog(null, "Residencia nao encontrada!");
+            System.out.println("Dispositivo nao encontrada!");
+        }
     }//GEN-LAST:event_residencesMyResidences_cbxActionPerformed
-
-    private void searchResidence_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchResidence_btnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchResidence_btnActionPerformed
 
     private void generateDeviceReport_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateDeviceReport_btn1ActionPerformed
         try {
@@ -667,9 +659,9 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         try {
             String selectedResidence = String.valueOf(residencesMyResidences_cbx.getSelectedItem());
             int residenceId = Integer.parseInt(selectedResidence.split(" ")[0]);
-            Model.ResidenceFuncs_DAO.updateResidenceInfo(residenceId, deviceNameMyDevices_txt.getText(), powerInWattsMyDevices_txt.getText());
+            Model.ResidenceFuncs_DAO.updateResidenceInfo(residenceId, cep_txt1.getText(), country_txt1.getText(), uf_txt1.getText(), city_txt1.getText(), neighborhood_txt1.getText(), street_txt1.getText(), number_txt1.getText(), additional_txt1.getText(), energyFee_txt1.getText());
         } catch (Exception e) {
-            System.out.println("Dispositivo nao encontrado!");
+            System.out.println("Residencia invalida!");
         }
     }//GEN-LAST:event_updateDeviceInfo_btn1ActionPerformed
 
@@ -762,7 +754,6 @@ public class MainMenu_GUI extends javax.swing.JFrame {
     public static javax.swing.JComboBox residencesNewDevice_cbx;
     private javax.swing.JButton save_btn;
     private javax.swing.JButton searchCEP_btn;
-    private javax.swing.JButton searchResidence_btn;
     public static javax.swing.JToggleButton status_togglebtn;
     public static javax.swing.JTextField street_txt;
     public static javax.swing.JTextField street_txt1;
