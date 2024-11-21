@@ -406,12 +406,22 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         updateDeviceInfo_btn1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         updateDeviceInfo_btn1.setForeground(new java.awt.Color(255, 51, 0));
         updateDeviceInfo_btn1.setText("ALTERAR INFORMACOES");
+        updateDeviceInfo_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateDeviceInfo_btn1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(updateDeviceInfo_btn1);
         updateDeviceInfo_btn1.setBounds(30, 630, 330, 20);
 
         deleteResidence_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         deleteResidence_btn.setForeground(new java.awt.Color(255, 0, 0));
         deleteResidence_btn.setText("EXCLUIR RESIDENCIA");
+        deleteResidence_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteResidence_btnActionPerformed(evt);
+            }
+        });
         jPanel4.add(deleteResidence_btn);
         deleteResidence_btn.setBounds(30, 650, 330, 20);
 
@@ -639,9 +649,29 @@ public class MainMenu_GUI extends javax.swing.JFrame {
             Model.ResidenceFuncs_DAO.fetchDataAndGenerateReport(residenceId);
         } catch (Exception e) {
             //JOptionPane.showMessageDialog(null, "Residencia nao encontrada!");
-            System.out.println("Residencia nao encontrada!");
+            System.out.println("Residencia invalida!");
         }
     }//GEN-LAST:event_generateDeviceReport_btn1ActionPerformed
+
+    private void deleteResidence_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteResidence_btnActionPerformed
+        try {
+            String selectedResidence = String.valueOf(residencesMyResidences_cbx.getSelectedItem());
+            int residenceId = Integer.parseInt(selectedResidence.split(" ")[0]);
+            Model.DeviceFuncs_DAO.deleteDevice(residenceId);
+        } catch (Exception e) {
+            System.out.println("Residencia invalida!");
+        }
+    }//GEN-LAST:event_deleteResidence_btnActionPerformed
+
+    private void updateDeviceInfo_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDeviceInfo_btn1ActionPerformed
+        try {
+            String selectedResidence = String.valueOf(residencesMyResidences_cbx.getSelectedItem());
+            int residenceId = Integer.parseInt(selectedResidence.split(" ")[0]);
+            Model.ResidenceFuncs_DAO.updateResidenceInfo(residenceId, deviceNameMyDevices_txt.getText(), powerInWattsMyDevices_txt.getText());
+        } catch (Exception e) {
+            System.out.println("Dispositivo nao encontrado!");
+        }
+    }//GEN-LAST:event_updateDeviceInfo_btn1ActionPerformed
 
     /**
          * @param args the command line arguments

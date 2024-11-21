@@ -82,7 +82,28 @@ public class ResidenceFuncs_DAO {
             return null;
         }
     }
-
+    
+    public static boolean deleteResidence(int residence) {
+        if (Model.ConfirmationFuncs_DAO.deleteConfirmation()) {
+            try (java.sql.Connection con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+                    PreparedStatement pstmtDelete = con.prepareStatement("DELETE FROM RESIDENCE WHERE id=?")) {
+                pstmtDelete.setInt(1, residence);
+                int rowsAffected = pstmtDelete.executeUpdate(); //executeUpdate para saber se houveram linhas afetadas pelo comando.
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(null, "Residencia deletada com sucesso!");
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Residencia nao encontrada!");
+                    return false;
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erro ao excluir dados! Por favor, tente novamente.");
+            }
+            return false;
+        }
+        return false;
+    }
+    
     private static void generateReport(int residenceId, String cep, String country,
             String state, String city, String neighborhood, String street, String number,
             String additional, double avgEnergyFee, int totalDevices, double totalPower, double totalConsumption,

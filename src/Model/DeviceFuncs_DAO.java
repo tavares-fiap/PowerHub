@@ -109,7 +109,7 @@ public class DeviceFuncs_DAO {
     }
 
     public static boolean deleteDevice(int deviceId) {
-        if (Model.ConfirmationFuncs_DAO.deleteDeviceConfirmation()) {
+        if (Model.ConfirmationFuncs_DAO.deleteConfirmation()) {
             try (java.sql.Connection con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
                     PreparedStatement pstmtDelete = con.prepareStatement("DELETE FROM DEVICE WHERE id=?")) {
                 pstmtDelete.setInt(1, deviceId);
