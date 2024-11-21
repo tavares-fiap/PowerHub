@@ -339,11 +339,21 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         jPanel4.setLayout(null);
 
         residencesMyResidences_cbx.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        residencesMyResidences_cbx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                residencesMyResidences_cbxActionPerformed(evt);
+            }
+        });
         jPanel4.add(residencesMyResidences_cbx);
         residencesMyResidences_cbx.setBounds(30, 180, 330, 30);
 
         searchResidence_btn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         searchResidence_btn.setText("BUSCAR");
+        searchResidence_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchResidence_btnActionPerformed(evt);
+            }
+        });
         jPanel4.add(searchResidence_btn);
         searchResidence_btn.setBounds(30, 220, 330, 20);
 
@@ -385,6 +395,11 @@ public class MainMenu_GUI extends javax.swing.JFrame {
 
         generateDeviceReport_btn1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         generateDeviceReport_btn1.setText("GERAR RELATORIO");
+        generateDeviceReport_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateDeviceReport_btn1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(generateDeviceReport_btn1);
         generateDeviceReport_btn1.setBounds(30, 605, 330, 25);
 
@@ -507,7 +522,7 @@ public class MainMenu_GUI extends javax.swing.JFrame {
 
     private void residencesMyDevices_cbxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residencesMyDevices_cbxActionPerformed
         try {
-            String selectedResidence = String.valueOf(residencesNewDevice_cbx.getSelectedItem());
+            String selectedResidence = String.valueOf(residencesMyDevices_cbx.getSelectedItem());
             int residenceId = Integer.parseInt(selectedResidence.split(" ")[0]);
             Model.FieldFuncs_DAO.refreshDeviceCombobox(residenceId);
         } catch (Exception e) {
@@ -538,7 +553,7 @@ public class MainMenu_GUI extends javax.swing.JFrame {
             }
         } else {
             try {
-                String selectedResidence = String.valueOf(residencesNewDevice_cbx.getSelectedItem());
+                String selectedResidence = String.valueOf(residencesMyDevices_cbx.getSelectedItem());
                 int residenceId = Integer.parseInt(selectedResidence.split(" ")[0]);
                 Residence residence = Model.ResidenceFuncs_DAO.getResidenceById(residenceId);
                 View.MainMenu_GUI.status_togglebtn.setText("OFF");
@@ -590,7 +605,7 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         // SE APARELHO ESTIVER LIGADO, DESLIGA APARELHO E ENCERRA MEASUREMENT ATUAL PARA GERAR RELATORIO
         if (status_togglebtn.isSelected()) {
             try {
-                String selectedResidence = String.valueOf(residencesNewDevice_cbx.getSelectedItem());
+                String selectedResidence = String.valueOf(residencesMyDevices_cbx.getSelectedItem());
                 int residenceId = Integer.parseInt(selectedResidence.split(" ")[0]);
                 Residence residence = Model.ResidenceFuncs_DAO.getResidenceById(residenceId);
                 View.MainMenu_GUI.status_togglebtn.setText("OFF");
@@ -608,6 +623,25 @@ public class MainMenu_GUI extends javax.swing.JFrame {
             System.out.println("Dispositivo nao encontrado!");
         }
     }//GEN-LAST:event_generateDeviceReport_btnActionPerformed
+
+    private void residencesMyResidences_cbxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residencesMyResidences_cbxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_residencesMyResidences_cbxActionPerformed
+
+    private void searchResidence_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchResidence_btnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchResidence_btnActionPerformed
+
+    private void generateDeviceReport_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateDeviceReport_btn1ActionPerformed
+        try {
+            String selectedResidence = String.valueOf(residencesMyResidences_cbx.getSelectedItem());
+            int residenceId = Integer.parseInt(selectedResidence.split(" ")[0]);
+            Model.ResidenceFuncs_DAO.fetchDataAndGenerateReport(residenceId);
+        } catch (Exception e) {
+            //JOptionPane.showMessageDialog(null, "Residencia nao encontrada!");
+            System.out.println("Residencia nao encontrada!");
+        }
+    }//GEN-LAST:event_generateDeviceReport_btn1ActionPerformed
 
     /**
          * @param args the command line arguments
