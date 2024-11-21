@@ -76,8 +76,8 @@ public class MeasurementFuncs_DAO {
         return (devicePower * (usageTimeInMinutes / 60)) / 1000;
     }
     
-    public static double calculateFinalFee(double consumption, double usageTimeInMinutes, double energy_fee) {
-        return (consumption * (usageTimeInMinutes/60)) * energy_fee;
+    public static double calculateFinalFee(double consumption, double usageTimeInMinutes, double energyFee) {
+        return (consumption * (usageTimeInMinutes/60)) * energyFee;
     }
 
     public static String getMeasurementStart(int deviceId) {

@@ -83,11 +83,11 @@ public class ResidenceFuncs_DAO {
         }
     }
 
-    public static boolean deleteResidence(int residence) {
+    public static boolean deleteResidence(int residenceId) {
         if (Model.ConfirmationFuncs_DAO.deleteConfirmation()) {
             try (java.sql.Connection con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
                     PreparedStatement pstmtDelete = con.prepareStatement("DELETE FROM RESIDENCE WHERE id=?")) {
-                pstmtDelete.setInt(1, residence);
+                pstmtDelete.setInt(1, residenceId);
                 int rowsAffected = pstmtDelete.executeUpdate(); //executeUpdate para saber se houveram linhas afetadas pelo comando.
                 if (rowsAffected > 0) {
                     JOptionPane.showMessageDialog(null, "Residencia deletada com sucesso!");
