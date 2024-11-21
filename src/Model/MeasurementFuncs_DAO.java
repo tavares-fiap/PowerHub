@@ -44,16 +44,19 @@ public class MeasurementFuncs_DAO {
         LocalDateTime started = convertToDateTime(stringStarted);
         LocalDateTime ended = LocalDateTime.now();
         Duration duration = Duration.between(started, ended);
-        double consumption = calculateConsumption(device.getPowerInWatts(), duration.toMinutes());
+        int durationInMinutes = (int) duration.toMinutes();
+        double consumption = calculateConsumption(device.getPowerInWatts(), durationInMinutes);
+        double finalFee = calculateFinalFee(consumption, durationInMinutes, energyFee);
         try (java.sql.Connection con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-                PreparedStatement pstmt = con.prepareStatement("UPDATE MEASUREMENT SET ended=?, consumption=?, status=?, energy_fee=?, usage_time_in_minutes WHERE status=? AND device_id=?")) {
+                PreparedStatement pstmt = con.prepareStatement("UPDATE MEASUREMENT SET ended=?, consumption=?, status=?, energy_fee=?, usage_time_in_minutes=?, final_fee=? WHERE status=? AND device_id=?")) {
             pstmt.setObject(1, Timestamp.valueOf(ended));
             pstmt.setDouble(2, consumption);
             pstmt.setBoolean(3, false);
             pstmt.setDouble(4, energyFee);
-            pstmt.setInt(5, (int) duration.toMinutes());
-            pstmt.setBoolean(6, true); //So pode existir uma medicao ativa por vez no banco, por isso bisca pela que esta ativa
-            pstmt.setInt(7, deviceId);
+            pstmt.setInt(5, durationInMinutes);
+            pstmt.setDouble(6, finalFee);
+            pstmt.setBoolean(7, true); //So pode existir uma medicao ativa por vez no banco, por isso bisca pela que esta ativa
+            pstmt.setInt(8, deviceId);
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
@@ -71,6 +74,10 @@ public class MeasurementFuncs_DAO {
 
     public static double calculateConsumption(double devicePower, double usageTimeInMinutes) {
         return (devicePower * (usageTimeInMinutes / 60)) / 1000;
+    }
+    
+    public static double calculateFinalFee(double consumption, double usageTimeInMinutes, double energy_fee) {
+        return (consumption * (usageTimeInMinutes/60)) * energy_fee;
     }
 
     public static String getMeasurementStart(int deviceId) {

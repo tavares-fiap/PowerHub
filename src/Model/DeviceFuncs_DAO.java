@@ -76,6 +76,4 @@ public class DeviceFuncs_DAO {
             return false;
         }
     }
-    
-    
 }
