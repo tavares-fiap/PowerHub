@@ -21,7 +21,7 @@ CREATE TABLE RESIDENCE (
     street VARCHAR(150) NOT NULL,
     number VARCHAR(10) NOT NULL,
     additional VARCHAR(100),
-    energy_fee FLOAT NOT NULL,
+    energy_fee DECIMAL(10, 4) NOT NULL,
     user_cpf CHAR(11) NOT NULL,
     FOREIGN KEY (user_cpf) REFERENCES USER(cpf) ON DELETE CASCADE
 );
@@ -30,7 +30,7 @@ CREATE TABLE RESIDENCE (
 CREATE TABLE DEVICE (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    power FLOAT NOT NULL,
+    power DECIMAL(10, 4) NOT NULL,
     status BOOLEAN DEFAULT 0,
     residence_id INT NOT NULL,
     FOREIGN KEY (residence_id) REFERENCES RESIDENCE(id) ON DELETE CASCADE
@@ -42,6 +42,9 @@ CREATE TABLE MEASUREMENT (
     device_id INT NOT NULL,
     started DATETIME NOT NULL,
     ended DATETIME,
-    consumption FLOAT NOT NULL,
+    status BOOLEAN DEFAULT 1,
+    consumption DECIMAL(10, 4) DEFAULT NULL,
+    energy_fee DECIMAL(10, 4) NOT NULL,
+    usage_time_in_minutes INT DEFAULT NULL,
     FOREIGN KEY (device_id) REFERENCES DEVICE(id) ON DELETE CASCADE
 );

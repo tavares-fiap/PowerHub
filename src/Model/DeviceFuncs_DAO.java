@@ -3,6 +3,7 @@ package Model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -26,6 +27,7 @@ public class DeviceFuncs_DAO {
                 JOptionPane.showMessageDialog(null, "Dispositivo adicionado com sucesso!", "", JOptionPane.INFORMATION_MESSAGE);
 
                 Model.FieldFuncs_DAO.cleanNewDeviceFields();
+                Model.FieldFuncs_DAO.refreshDeviceCombobox(residenceId);
                 return true;
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Ocorreu algum erro na inserção!", "ERRO!", JOptionPane.ERROR_MESSAGE);
@@ -35,4 +37,45 @@ public class DeviceFuncs_DAO {
         }
         return false;
     }
+    
+    public static Device getDeviceById(int deviceId){
+        String query = "SELECT * FROM DEVICE WHERE id = ?";
+        try (Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword); PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, deviceId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                String name = rs.getString("name");
+                double power = rs.getDouble("power");
+                boolean status = rs.getBoolean("status");
+                return new Device(deviceId, name, power, status);
+            }
+            return null;        
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public static boolean changeDeviceStatus(Device device, boolean status){
+        int deviceId = device.getId();
+        try (java.sql.Connection con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+                PreparedStatement pstmt = con.prepareStatement("UPDATE DEVICE SET status=? WHERE id=?")) {
+            pstmt.setBoolean(1, status);
+            pstmt.setInt(2, deviceId);
+           
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Status do dispositivo alterado com sucesso!");
+                return true;
+            } else {
+                System.out.println("Dispositivo nao encontrado");
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao tentar mudar status do dispositivo!");
+            return false;
+        }
+    }
+    
+    
 }

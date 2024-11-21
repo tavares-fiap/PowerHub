@@ -4,6 +4,7 @@ package Model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -52,4 +53,29 @@ public class ResidenceFuncs_DAO {
         }
         return false;
     }
+    
+    public static Residence getResidenceById(int residenceId){
+        String query = "SELECT * FROM RESIDENCE WHERE id = ?";
+        try (Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword); PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, residenceId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                String cep = rs.getString("cep");
+                String country = rs.getString("country");
+                String state = rs.getString("state");
+                String city = rs.getString("city");
+                String neighborhood = rs.getString("neighborhood");
+                String street = rs.getString("street");
+                String number = rs.getString("number");
+                String additional = rs.getString("additional");
+                double energyFee = rs.getDouble("energy_fee");
+                return new Residence(residenceId, cep, country, state, city, neighborhood, street, number, additional, energyFee);
+            }
+            return null;        
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
 }

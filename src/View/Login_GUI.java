@@ -5,8 +5,6 @@
  */
 package View;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author sapat

@@ -55,10 +55,10 @@ public class ValidationFuncs_DAO {
         }
         for (char c : inputString.toCharArray()) {
             if (Character.isDigit(c)) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
     
     public static boolean canBeConvertedToInteger(String number) {

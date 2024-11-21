@@ -74,4 +74,35 @@ public class FieldFuncs_DAO {
             e.printStackTrace();
         }
     }
+    
+    public static void refreshDeviceCombobox(int residenceId) {
+        String query = "SELECT id, name FROM DEVICE WHERE residence_id = ?";
+        View.MainMenu_GUI.devices_cbx.removeAllItems();
+        try (Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword); PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, residenceId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                View.MainMenu_GUI.devices_cbx.addItem(id + " || " + name);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void refreshMyDevicesFields(int deviceId) {
+        Device device = Model.DeviceFuncs_DAO.getDeviceById(deviceId);
+        if (device != null) {
+            View.MainMenu_GUI.deviceNameMyDevices_txt.setText(device.getDeviceName());
+            View.MainMenu_GUI.powerInWattsMyDevices_txt.setText(String.valueOf(device.getPowerInWatts()));
+            if (device.getStatus()){
+                View.MainMenu_GUI.status_togglebtn.setSelected(true);
+                View.MainMenu_GUI.status_togglebtn.setText("ON");
+            } else {
+                View.MainMenu_GUI.status_togglebtn.setSelected(false);
+                View.MainMenu_GUI.status_togglebtn.setText("OFF");
+            }
+        }
+    }
 }
