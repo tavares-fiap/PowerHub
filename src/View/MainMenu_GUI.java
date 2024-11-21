@@ -258,6 +258,11 @@ public class MainMenu_GUI extends javax.swing.JFrame {
 
         generateDeviceReport_btn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         generateDeviceReport_btn.setText("GERAR RELATORIO");
+        generateDeviceReport_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateDeviceReport_btnActionPerformed(evt);
+            }
+        });
         jPanel3.add(generateDeviceReport_btn);
         generateDeviceReport_btn.setBounds(30, 473, 320, 30);
 
@@ -578,9 +583,35 @@ public class MainMenu_GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteDevice_btnActionPerformed
 
+    private void generateDeviceReport_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateDeviceReport_btnActionPerformed
+        String selectedDevice = String.valueOf(devices_cbx.getSelectedItem());
+        int deviceId = Integer.parseInt(selectedDevice.split(" ")[0]);
+        Device device = Model.DeviceFuncs_DAO.getDeviceById(deviceId);
+        // SE APARELHO ESTIVER LIGADO, DESLIGA APARELHO E ENCERRA MEASUREMENT ATUAL PARA GERAR RELATORIO
+        if (status_togglebtn.isSelected()) {
+            try {
+                String selectedResidence = String.valueOf(residencesNewDevice_cbx.getSelectedItem());
+                int residenceId = Integer.parseInt(selectedResidence.split(" ")[0]);
+                Residence residence = Model.ResidenceFuncs_DAO.getResidenceById(residenceId);
+                View.MainMenu_GUI.status_togglebtn.setText("OFF");
+                Model.DeviceFuncs_DAO.changeDeviceStatus(device, false);
+                Model.MeasurementFuncs_DAO.endMeasurement(device, residence.getEnergyFee());
+            } catch (Exception e) {
+                //JOptionPane.showMessageDialog(null, "Residencia nao encontrada!");
+                System.out.println("Residencia nao encontrada!");
+            }
+        }
+        
+        try {
+            Model.DeviceFuncs_DAO.fetchDataAndGenerateReport(deviceId);
+        } catch (Exception e) {
+            System.out.println("Dispositivo nao encontrado!");
+        }
+    }//GEN-LAST:event_generateDeviceReport_btnActionPerformed
+
     /**
-     * @param args the command line arguments
-     */
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
